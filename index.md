@@ -750,9 +750,6 @@
 | `exec 5<> file` | Open file descriptor 5 for reading and writing | `exec 5<> datafile` |
 | `command <<< "string"` | Here string (input from string) | `grep pattern <<< "test string"` |
 | `command << EOF` | Here document (multi-line input) | `cat << EOF > file.txt
-line 1
-line 2
-EOF` |
 | `command1 && command2` | Run command2 only if command1 succeeds | `mkdir dir && cd dir` |
 | `command1 \|\| command2` | Run command2 only if command1 fails | `ping -c1 server \|\| echo "Server down"` |
 | `(command1; command2)` | Group commands in subshell | `(cd dir; ls)` |
