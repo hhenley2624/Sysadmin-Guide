@@ -737,7 +737,7 @@
 | `>`                       | Redirect output to a file                      | `command > file`                          |
 | `>>`                      | Append output to a file                        | `command >> file`                         |
 | `<`                       | Redirect input from a file                     | `command < file`                          |
-| `                         | `                                              | Pipe output of one command to another     | `command1    | command2` |
+| `|`                       | Pipe output of one command to another          | `command1 | command2`                     |
 | `2>`                      | Redirect stderr to a file                      | `command 2> error_file`                   |
 | `2>&1`                    | Redirect stderr to stdout                      | `command > file 2>&1`                     |
 | `&>`                      | Redirect both stdout and stderr to a file      | `command &> file`                         |
