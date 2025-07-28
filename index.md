@@ -1085,198 +1085,198 @@
 
 ## OpenShift Container Platform
 
-| Command                                                                                      | Description                          | Example Usage                                                                                  |
-| -------------------------------------------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- | ------------------ |
-| **Basic OpenShift Commands**                                                                 |
-| `oc login`                                                                                   | Log in to OpenShift cluster          | `oc login https://api.cluster.com:6443`                                                        |
-| `oc login --token=TOKEN`                                                                     | Log in using token                   | `oc login --token=sha256~abc123 --server=https://api.cluster.com:6443`                         |
-| `oc whoami`                                                                                  | Show current user                    | `oc whoami`                                                                                    |
-| `oc whoami -t`                                                                               | Show current user's token            | `oc whoami -t`                                                                                 |
-| `oc config current-context`                                                                  | Show current context                 | `oc config current-context`                                                                    |
-| `oc config get-contexts`                                                                     | List all contexts                    | `oc config get-contexts`                                                                       |
-| `oc config use-context`                                                                      | Switch context                       | `oc config use-context dev-cluster`                                                            |
-| `oc logout`                                                                                  | Log out from OpenShift               | `oc logout`                                                                                    |
-| `oc version`                                                                                 | Show OpenShift and client version    | `oc version`                                                                                   |
-| `oc api-resources`                                                                           | List all API resources               | `oc api-resources`                                                                             |
-| `oc api-versions`                                                                            | List all API versions                | `oc api-versions`                                                                              |
-| **Cluster Health and Status**                                                                |
-| `oc status`                                                                                  | Show overview of current project     | `oc status`                                                                                    |
-| `oc get nodes`                                                                               | List all nodes                       | `oc get nodes`                                                                                 |
-| `oc get nodes -o wide`                                                                       | List nodes with additional info      | `oc get nodes -o wide`                                                                         |
-| `oc describe node`                                                                           | Describe node details                | `oc describe node worker-1`                                                                    |
-| `oc get clusterversion`                                                                      | Show cluster version                 | `oc get clusterversion`                                                                        |
-| `oc get clusteroperators`                                                                    | Show cluster operator status         | `oc get clusteroperators`                                                                      |
-| `oc get co`                                                                                  | Short form for cluster operators     | `oc get co`                                                                                    |
-| `oc describe co operator-name`                                                               | Describe cluster operator            | `oc describe co ingress`                                                                       |
-| `oc adm node-logs node`                                                                      | Get node logs                        | `oc adm node-logs worker-1`                                                                    |
-| `oc adm node-logs -u kubelet node`                                                           | Get kubelet logs for node            | `oc adm node-logs -u kubelet worker-1`                                                         |
-| `oc get events --sort-by=.metadata.creationTimestamp`                                        | Show events sorted by time           | `oc get events --sort-by=.metadata.creationTimestamp`                                          |
-| `oc get events --field-selector type=Warning`                                                | Show only warning events             | `oc get events --field-selector type=Warning`                                                  |
-| **Project/Namespace Management**                                                             |
-| `oc projects`                                                                                | List all accessible projects         | `oc projects`                                                                                  |
-| `oc project`                                                                                 | Show current project                 | `oc project`                                                                                   |
-| `oc project project-name`                                                                    | Switch to project                    | `oc project myapp-dev`                                                                         |
-| `oc new-project`                                                                             | Create new project                   | `oc new-project myapp-prod --description="Production environment"`                             |
-| `oc delete project`                                                                          | Delete project                       | `oc delete project old-project`                                                                |
-| `oc get namespaces`                                                                          | List all namespaces                  | `oc get namespaces`                                                                            |
-| `oc describe project`                                                                        | Describe project details             | `oc describe project myapp-dev`                                                                |
-| `oc get limits`                                                                              | Show resource limits                 | `oc get limits`                                                                                |
-| `oc get quota`                                                                               | Show resource quotas                 | `oc get quota`                                                                                 |
-| `oc describe quota`                                                                          | Describe resource quota              | `oc describe quota compute-quota`                                                              |
-| **Pod Management and Troubleshooting**                                                       |
-| `oc get pods`                                                                                | List pods in current project         | `oc get pods`                                                                                  |
-| `oc get pods -o wide`                                                                        | List pods with node info             | `oc get pods -o wide`                                                                          |
-| `oc get pods --all-namespaces`                                                               | List pods across all namespaces      | `oc get pods --all-namespaces`                                                                 |
-| `oc get pods -A`                                                                             | Short form for all namespaces        | `oc get pods -A`                                                                               |
-| `oc get pods --field-selector status.phase=Running`                                          | Filter pods by status                | `oc get pods --field-selector status.phase=Running`                                            |
-| `oc get pods --selector app=myapp`                                                           | Filter pods by label                 | `oc get pods --selector app=myapp`                                                             |
-| `oc get pods -l app=myapp`                                                                   | Short form for label selector        | `oc get pods -l app=myapp`                                                                     |
-| `oc describe pod`                                                                            | Describe pod details                 | `oc describe pod myapp-1-abc123`                                                               |
-| `oc logs pod-name`                                                                           | Show pod logs                        | `oc logs myapp-1-abc123`                                                                       |
-| `oc logs -f pod-name`                                                                        | Follow pod logs                      | `oc logs -f myapp-1-abc123`                                                                    |
-| `oc logs pod-name -c container`                                                              | Logs from specific container         | `oc logs myapp-1-abc123 -c sidecar`                                                            |
-| `oc logs pod-name --previous`                                                                | Show previous container logs         | `oc logs myapp-1-abc123 --previous`                                                            |
-| `oc logs pod-name --since=1h`                                                                | Show logs from last hour             | `oc logs myapp-1-abc123 --since=1h`                                                            |
-| `oc logs pod-name --tail=100`                                                                | Show last 100 log lines              | `oc logs myapp-1-abc123 --tail=100`                                                            |
-| `oc exec pod-name -- command`                                                                | Execute command in pod               | `oc exec myapp-1-abc123 -- ls /app`                                                            |
-| `oc exec -it pod-name -- /bin/bash`                                                          | Interactive shell in pod             | `oc exec -it myapp-1-abc123 -- /bin/bash`                                                      |
-| `oc exec -it pod-name -c container -- /bin/bash`                                             | Shell in specific container          | `oc exec -it myapp-1-abc123 -c app -- /bin/bash`                                               |
-| `oc port-forward pod-name local:remote`                                                      | Forward port from pod                | `oc port-forward myapp-1-abc123 8080:8080`                                                     |
-| `oc delete pod`                                                                              | Delete pod                           | `oc delete pod myapp-1-abc123`                                                                 |
-| `oc get pod -o yaml`                                                                         | Get pod definition in YAML           | `oc get pod myapp-1-abc123 -o yaml`                                                            |
-| `oc get pod -o json`                                                                         | Get pod definition in JSON           | `oc get pod myapp-1-abc123 -o json`                                                            |
-| **Service and Route Management**                                                             |
-| `oc get services`                                                                            | List services                        | `oc get services`                                                                              |
-| `oc get svc`                                                                                 | Short form for services              | `oc get svc`                                                                                   |
-| `oc describe service`                                                                        | Describe service                     | `oc describe service myapp-service`                                                            |
-| `oc expose service`                                                                          | Create route for service             | `oc expose service myapp-service`                                                              |
-| `oc get routes`                                                                              | List routes                          | `oc get routes`                                                                                |
-| `oc describe route`                                                                          | Describe route                       | `oc describe route myapp-route`                                                                |
-| `oc delete route`                                                                            | Delete route                         | `oc delete route myapp-route`                                                                  |
-| `oc get endpoints`                                                                           | Show service endpoints               | `oc get endpoints`                                                                             |
-| `oc get ep`                                                                                  | Short form for endpoints             | `oc get ep`                                                                                    |
-| `oc port-forward service/name local:remote`                                                  | Forward port from service            | `oc port-forward service/myapp 8080:80`                                                        |
-| **Deployment and Application Management**                                                    |
-| `oc get deployments`                                                                         | List deployments                     | `oc get deployments`                                                                           |
-| `oc get deploy`                                                                              | Short form for deployments           | `oc get deploy`                                                                                |
-| `oc get dc`                                                                                  | List deployment configs              | `oc get dc`                                                                                    |
-| `oc describe deployment`                                                                     | Describe deployment                  | `oc describe deployment myapp`                                                                 |
-| `oc describe dc`                                                                             | Describe deployment config           | `oc describe dc myapp`                                                                         |
-| `oc rollout status deployment`                                                               | Check rollout status                 | `oc rollout status deployment/myapp`                                                           |
-| `oc rollout history deployment`                                                              | Show rollout history                 | `oc rollout history deployment/myapp`                                                          |
-| `oc rollout undo deployment`                                                                 | Rollback deployment                  | `oc rollout undo deployment/myapp`                                                             |
-| `oc rollout restart deployment`                                                              | Restart deployment                   | `oc rollout restart deployment/myapp`                                                          |
-| `oc scale deployment --replicas=5`                                                           | Scale deployment                     | `oc scale deployment myapp --replicas=5`                                                       |
-| `oc scale dc --replicas=3`                                                                   | Scale deployment config              | `oc scale dc myapp --replicas=3`                                                               |
-| `oc autoscale deployment --min=2 --max=10`                                                   | Create horizontal pod autoscaler     | `oc autoscale deployment myapp --min=2 --max=10 --cpu-percent=80`                              |
-| `oc get hpa`                                                                                 | List horizontal pod autoscalers      | `oc get hpa`                                                                                   |
-| `oc get replicasets`                                                                         | List replica sets                    | `oc get replicasets`                                                                           |
-| `oc get rs`                                                                                  | Short form for replica sets          | `oc get rs`                                                                                    |
-| `oc new-app`                                                                                 | Create new application               | `oc new-app nginx:latest`                                                                      |
-| `oc new-app --name=myapp`                                                                    | Create app with specific name        | `oc new-app --name=myapp https://github.com/user/repo.git`                                     |
-| **ConfigMaps and Secrets**                                                                   |
-| `oc get configmaps`                                                                          | List config maps                     | `oc get configmaps`                                                                            |
-| `oc get cm`                                                                                  | Short form for config maps           | `oc get cm`                                                                                    |
-| `oc describe configmap`                                                                      | Describe config map                  | `oc describe configmap app-config`                                                             |
-| `oc create configmap --from-file`                                                            | Create config map from file          | `oc create configmap app-config --from-file=config.properties`                                 |
-| `oc create configmap --from-literal`                                                         | Create config map from literal       | `oc create configmap app-config --from-literal=key1=value1`                                    |
-| `oc get secrets`                                                                             | List secrets                         | `oc get secrets`                                                                               |
-| `oc describe secret`                                                                         | Describe secret                      | `oc describe secret mysecret`                                                                  |
-| `oc create secret generic`                                                                   | Create generic secret                | `oc create secret generic mysecret --from-literal=username=admin`                              |
-| `oc create secret docker-registry`                                                           | Create docker registry secret        | `oc create secret docker-registry regcred --docker-server=registry.com --docker-username=user` |
-| `oc extract secret/name --to=.`                                                              | Extract secret to files              | `oc extract secret/mysecret --to=.`                                                            |
-| **Storage and Persistent Volumes**                                                           |
-| `oc get pv`                                                                                  | List persistent volumes              | `oc get pv`                                                                                    |
-| `oc get pvc`                                                                                 | List persistent volume claims        | `oc get pvc`                                                                                   |
-| `oc describe pv`                                                                             | Describe persistent volume           | `oc describe pv pv-001`                                                                        |
-| `oc describe pvc`                                                                            | Describe persistent volume claim     | `oc describe pvc data-claim`                                                                   |
-| `oc get storageclass`                                                                        | List storage classes                 | `oc get storageclass`                                                                          |
-| `oc get sc`                                                                                  | Short form for storage classes       | `oc get sc`                                                                                    |
-| **Security and RBAC**                                                                        |
-| `oc get sa`                                                                                  | List service accounts                | `oc get sa`                                                                                    |
-| `oc get serviceaccounts`                                                                     | List service accounts (full)         | `oc get serviceaccounts`                                                                       |
-| `oc describe sa`                                                                             | Describe service account             | `oc describe sa default`                                                                       |
-| `oc get rolebindings`                                                                        | List role bindings                   | `oc get rolebindings`                                                                          |
-| `oc get clusterrolebindings`                                                                 | List cluster role bindings           | `oc get clusterrolebindings`                                                                   |
-| `oc get roles`                                                                               | List roles                           | `oc get roles`                                                                                 |
-| `oc get clusterroles`                                                                        | List cluster roles                   | `oc get clusterroles`                                                                          |
-| `oc describe rolebinding`                                                                    | Describe role binding                | `oc describe rolebinding admin`                                                                |
-| `oc policy add-role-to-user`                                                                 | Add role to user                     | `oc policy add-role-to-user edit developer`                                                    |
-| `oc policy remove-role-from-user`                                                            | Remove role from user                | `oc policy remove-role-from-user edit developer`                                               |
-| `oc auth can-i`                                                                              | Check permissions                    | `oc auth can-i create pods`                                                                    |
-| `oc auth can-i --list`                                                                       | List allowed actions                 | `oc auth can-i --list`                                                                         |
-| `oc get scc`                                                                                 | List security context constraints    | `oc get scc`                                                                                   |
-| `oc describe scc`                                                                            | Describe security context constraint | `oc describe scc restricted`                                                                   |
-| **Image Management**                                                                         |
-| `oc get images`                                                                              | List images                          | `oc get images`                                                                                |
-| `oc get imagestreams`                                                                        | List image streams                   | `oc get imagestreams`                                                                          |
-| `oc get is`                                                                                  | Short form for image streams         | `oc get is`                                                                                    |
-| `oc describe imagestream`                                                                    | Describe image stream                | `oc describe imagestream myapp`                                                                |
-| `oc tag`                                                                                     | Tag image                            | `oc tag myapp:latest myapp:stable`                                                             |
-| `oc import-image`                                                                            | Import image                         | `oc import-image myapp --from=registry.com/myapp:latest`                                       |
-| `oc get imagestreamtags`                                                                     | List image stream tags               | `oc get imagestreamtags`                                                                       |
-| **Build Management**                                                                         |
-| `oc get builds`                                                                              | List builds                          | `oc get builds`                                                                                |
-| `oc get buildconfigs`                                                                        | List build configs                   | `oc get buildconfigs`                                                                          |
-| `oc get bc`                                                                                  | Short form for build configs         | `oc get bc`                                                                                    |
-| `oc describe build`                                                                          | Describe build                       | `oc describe build myapp-1`                                                                    |
-| `oc describe buildconfig`                                                                    | Describe build config                | `oc describe buildconfig myapp`                                                                |
-| `oc start-build`                                                                             | Start new build                      | `oc start-build myapp`                                                                         |
-| `oc start-build --from-dir=.`                                                                | Build from local directory           | `oc start-build myapp --from-dir=.`                                                            |
-| `oc logs build/name`                                                                         | Show build logs                      | `oc logs build/myapp-1`                                                                        |
-| `oc logs -f bc/name`                                                                         | Follow build config logs             | `oc logs -f bc/myapp`                                                                          |
-| `oc cancel-build`                                                                            | Cancel build                         | `oc cancel-build myapp-1`                                                                      |
-| **Monitoring and Metrics**                                                                   |
-| `oc adm top nodes`                                                                           | Show node resource usage             | `oc adm top nodes`                                                                             |
-| `oc adm top pods`                                                                            | Show pod resource usage              | `oc adm top pods`                                                                              |
-| `oc adm top pods --containers`                                                               | Show container resource usage        | `oc adm top pods --containers`                                                                 |
-| `oc get --raw /metrics`                                                                      | Get cluster metrics                  | `oc get --raw /metrics`                                                                        |
-| `oc get --raw /api/v1/nodes/node-name/proxy/metrics`                                         | Get node metrics                     | `oc get --raw /api/v1/nodes/worker-1/proxy/metrics`                                            |
-| **Troubleshooting Commands**                                                                 |
-| `oc debug node/name`                                                                         | Debug node                           | `oc debug node/worker-1`                                                                       |
-| `oc debug pod/name`                                                                          | Debug pod                            | `oc debug pod/myapp-1-abc123`                                                                  |
-| `oc debug deployment/name`                                                                   | Debug deployment                     | `oc debug deployment/myapp`                                                                    |
-| `oc rsh pod-name`                                                                            | Remote shell to pod                  | `oc rsh myapp-1-abc123`                                                                        |
-| `oc rsync pod-name:remote local`                                                             | Sync files from pod                  | `oc rsync myapp-1-abc123:/app/logs ./logs`                                                     |
-| `oc rsync local pod-name:remote`                                                             | Sync files to pod                    | `oc rsync ./config myapp-1-abc123:/app/config`                                                 |
-| `oc get events --sort-by='.lastTimestamp'`                                                   | Show recent events                   | `oc get events --sort-by='.lastTimestamp'`                                                     |
-| `oc get pods --field-selector status.phase=Pending`                                          | Find pending pods                    | `oc get pods --field-selector status.phase=Pending`                                            |
-| `oc get pods --field-selector status.phase=Failed`                                           | Find failed pods                     | `oc get pods --field-selector status.phase=Failed`                                             |
-| `oc describe pod pod-name                                                                    | grep -A 10 Events`                   | Show pod events                                                                                | `oc describe pod myapp-1-abc123 | grep -A 10 Events` |
-| **Administrative Commands**                                                                  |
-| `oc adm must-gather`                                                                         | Collect cluster data for support     | `oc adm must-gather`                                                                           |
-| `oc adm inspect`                                                                             | Inspect cluster resources            | `oc adm inspect ns/myproject`                                                                  |
-| `oc adm policy`                                                                              | Manage authorization policies        | `oc adm policy add-cluster-role-to-user cluster-admin user`                                    |
-| `oc adm groups`                                                                              | Manage user groups                   | `oc adm groups new developers`                                                                 |
-| `oc adm prune`                                                                               | Clean up resources                   | `oc adm prune images --keep-tag-revisions=3`                                                   |
-| `oc adm cordon node`                                                                         | Mark node as unschedulable           | `oc adm cordon worker-1`                                                                       |
-| `oc adm uncordon node`                                                                       | Mark node as schedulable             | `oc adm uncordon worker-1`                                                                     |
-| `oc adm drain node`                                                                          | Drain node for maintenance           | `oc adm drain worker-1 --ignore-daemonsets`                                                    |
-| **Certificate Management**                                                                   |
-| `oc get csr`                                                                                 | List certificate signing requests    | `oc get csr`                                                                                   |
-| `oc describe csr`                                                                            | Describe certificate signing request | `oc describe csr csr-abc123`                                                                   |
-| `oc adm certificate approve`                                                                 | Approve certificate signing request  | `oc adm certificate approve csr-abc123`                                                        |
-| `oc adm certificate deny`                                                                    | Deny certificate signing request     | `oc adm certificate deny csr-abc123`                                                           |
-| `oc delete csr`                                                                              | Delete certificate signing request   | `oc delete csr csr-abc123`                                                                     |
-| `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving`                  | Filter CSRs by signer                | `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving`                    |
-| `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` | List pending CSRs                    | `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'`   |
-| `oc patch`                                                                                   | Update resource using patch          | `oc patch deployment myapp -p '{"spec":{"replicas":3}}'`                                       |
-| `oc label`                                                                                   | Add/update labels                    | `oc label pod myapp-1-abc123 env=production`                                                   |
-| `oc annotate`                                                                                | Add/update annotations               | `oc annotate pod myapp-1-abc123 description="Main application pod"`                            |
-| **Output Formatting**                                                                        |
-| `oc get pods -o wide`                                                                        | Wide output format                   | `oc get pods -o wide`                                                                          |
-| `oc get pods -o yaml`                                                                        | YAML output format                   | `oc get pods -o yaml`                                                                          |
-| `oc get pods -o json`                                                                        | JSON output format                   | `oc get pods -o json`                                                                          |
-| `oc get pods -o jsonpath='{.items[*].metadata.name}'`                                        | JSONPath output                      | `oc get pods -o jsonpath='{.items[*].metadata.name}'`                                          |
-| `oc get pods -o custom-columns=NAME:.metadata.name,STATUS:.status.phase`                     | Custom columns                       | `oc get pods -o custom-columns=NAME:.metadata.name,STATUS:.status.phase`                       |
-| `oc get pods --show-labels`                                                                  | Show labels                          | `oc get pods --show-labels`                                                                    |
-| `oc get pods --no-headers`                                                                   | Suppress headers                     | `oc get pods --no-headers`                                                                     |
-| **Resource Management**                                                                      |
-| `oc apply -f file.yaml`                                                                      | Apply configuration from file        | `oc apply -f deployment.yaml`                                                                  |
-| `oc create -f file.yaml`                                                                     | Create resource from file            | `oc create -f service.yaml`                                                                    |
-| `oc replace -f file.yaml`                                                                    | Replace resource from file           | `oc replace -f configmap.yaml`                                                                 |
-| `oc delete -f file.yaml`                                                                     | Delete resource from file            | `oc delete -f deployment.yaml`                                                                 |
-| `oc edit`                                                                                    | Edit resource                        | `oc edit deployment myapp`                                                                     |
-| `oc explain`                                                                                 | Show resource documentation          | `oc explain pod.spec.containers`                                                               |
-| `oc wait`                                                                                    | Wait for condition                   | `oc wait --for=condition=available deployment/myapp`                                           |
-| `oc wait --for=delete`                                                                       | Wait for resource deletion           | `oc wait --for=delete pod/myapp-1-abc123`                                                      |
+| Command | Description | Example Usage |
+| ------- | ----------- | ------------- |
+| **Basic OpenShift Commands** |
+| `oc login` | Log in to OpenShift cluster | `oc login https://api.cluster.com:6443` |
+| `oc login --token=TOKEN` | Log in using token | `oc login --token=sha256~abc123 --server=https://api.cluster.com:6443` |
+| `oc whoami` | Show current user | `oc whoami` |
+| `oc whoami -t` | Show current user's token | `oc whoami -t` |
+| `oc config current-context` | Show current context | `oc config current-context` |
+| `oc config get-contexts` | List all contexts | `oc config get-contexts` |
+| `oc config use-context` | Switch context | `oc config use-context dev-cluster` |
+| `oc logout` | Log out from OpenShift | `oc logout` |
+| `oc version` | Show OpenShift and client version | `oc version` |
+| `oc api-resources` | List all API resources | `oc api-resources` |
+| `oc api-versions` | List all API versions | `oc api-versions` |
+| **Cluster Health and Status** |
+| `oc status` | Show overview of current project | `oc status` |
+| `oc get nodes` | List all nodes | `oc get nodes` |
+| `oc get nodes -o wide` | List nodes with additional info | `oc get nodes -o wide` |
+| `oc describe node` | Describe node details | `oc describe node worker-1` |
+| `oc get clusterversion` | Show cluster version | `oc get clusterversion` |
+| `oc get clusteroperators` | Show cluster operator status | `oc get clusteroperators` |
+| `oc get co` | Short form for cluster operators | `oc get co` |
+| `oc describe co operator-name` | Describe cluster operator | `oc describe co ingress` |
+| `oc adm node-logs node` | Get node logs | `oc adm node-logs worker-1` |
+| `oc adm node-logs -u kubelet node` | Get kubelet logs for node | `oc adm node-logs -u kubelet worker-1` |
+| `oc get events --sort-by=.metadata.creationTimestamp` | Show events sorted by time | `oc get events --sort-by=.metadata.creationTimestamp` |
+| `oc get events --field-selector type=Warning` | Show only warning events | `oc get events --field-selector type=Warning` |
+| **Project/Namespace Management** |
+| `oc projects` | List all accessible projects | `oc projects` |
+| `oc project` | Show current project | `oc project` |
+| `oc project project-name` | Switch to project | `oc project myapp-dev` |
+| `oc new-project` | Create new project | `oc new-project myapp-prod --description="Production environment"` |
+| `oc delete project` | Delete project | `oc delete project old-project` |
+| `oc get namespaces` | List all namespaces | `oc get namespaces` |
+| `oc describe project` | Describe project details | `oc describe project myapp-dev` |
+| `oc get limits` | Show resource limits | `oc get limits` |
+| `oc get quota` | Show resource quotas | `oc get quota` |
+| `oc describe quota` | Describe resource quota | `oc describe quota compute-quota` |
+| **Pod Management and Troubleshooting** |
+| `oc get pods` | List pods in current project | `oc get pods` |
+| `oc get pods -o wide` | List pods with node info | `oc get pods -o wide` |
+| `oc get pods --all-namespaces` | List pods across all namespaces | `oc get pods --all-namespaces` |
+| `oc get pods -A` | Short form for all namespaces | `oc get pods -A` |
+| `oc get pods --field-selector status.phase=Running` | Filter pods by status | `oc get pods --field-selector status.phase=Running` |
+| `oc get pods --selector app=myapp` | Filter pods by label | `oc get pods --selector app=myapp` |
+| `oc get pods -l app=myapp` | Short form for label selector | `oc get pods -l app=myapp` |
+| `oc describe pod` | Describe pod details | `oc describe pod myapp-1-abc123` |
+| `oc logs pod-name` | Show pod logs | `oc logs myapp-1-abc123` |
+| `oc logs -f pod-name` | Follow pod logs | `oc logs -f myapp-1-abc123` |
+| `oc logs pod-name -c container` | Logs from specific container | `oc logs myapp-1-abc123 -c sidecar` |
+| `oc logs pod-name --previous` | Show previous container logs | `oc logs myapp-1-abc123 --previous` |
+| `oc logs pod-name --since=1h` | Show logs from last hour | `oc logs myapp-1-abc123 --since=1h` |
+| `oc logs pod-name --tail=100` | Show last 100 log lines | `oc logs myapp-1-abc123 --tail=100` |
+| `oc exec pod-name -- command` | Execute command in pod | `oc exec myapp-1-abc123 -- ls /app` |
+| `oc exec -it pod-name -- /bin/bash` | Interactive shell in pod | `oc exec -it myapp-1-abc123 -- /bin/bash` |
+| `oc exec -it pod-name -c container -- /bin/bash` | Shell in specific container | `oc exec -it myapp-1-abc123 -c app -- /bin/bash` |
+| `oc port-forward pod-name local:remote` | Forward port from pod | `oc port-forward myapp-1-abc123 8080:8080` |
+| `oc delete pod` | Delete pod | `oc delete pod myapp-1-abc123` |
+| `oc get pod -o yaml` | Get pod definition in YAML | `oc get pod myapp-1-abc123 -o yaml` |
+| `oc get pod -o json` | Get pod definition in JSON | `oc get pod myapp-1-abc123 -o json` |
+| **Service and Route Management** |
+| `oc get services` | List services | `oc get services` |
+| `oc get svc` | Short form for services | `oc get svc` |
+| `oc describe service` | Describe service | `oc describe service myapp-service` |
+| `oc expose service` | Create route for service | `oc expose service myapp-service` |
+| `oc get routes` | List routes | `oc get routes` |
+| `oc describe route` | Describe route | `oc describe route myapp-route` |
+| `oc delete route` | Delete route | `oc delete route myapp-route` |
+| `oc get endpoints` | Show service endpoints | `oc get endpoints` |
+| `oc get ep` | Short form for endpoints | `oc get ep` |
+| `oc port-forward service/name local:remote` | Forward port from service | `oc port-forward service/myapp 8080:80` |
+| **Deployment and Application Management** |
+| `oc get deployments` | List deployments | `oc get deployments` |
+| `oc get deploy` | Short form for deployments | `oc get deploy` |
+| `oc get dc` | List deployment configs | `oc get dc` |
+| `oc describe deployment` | Describe deployment | `oc describe deployment myapp` |
+| `oc describe dc` | Describe deployment config | `oc describe dc myapp` |
+| `oc rollout status deployment` | Check rollout status | `oc rollout status deployment/myapp` |
+| `oc rollout history deployment` | Show rollout history | `oc rollout history deployment/myapp` |
+| `oc rollout undo deployment` | Rollback deployment | `oc rollout undo deployment/myapp` |
+| `oc rollout restart deployment` | Restart deployment | `oc rollout restart deployment/myapp` |
+| `oc scale deployment --replicas=5` | Scale deployment | `oc scale deployment myapp --replicas=5` |
+| `oc scale dc --replicas=3` | Scale deployment config | `oc scale dc myapp --replicas=3` |
+| `oc autoscale deployment --min=2 --max=10` | Create horizontal pod autoscaler | `oc autoscale deployment myapp --min=2 --max=10 --cpu-percent=80` |
+| `oc get hpa` | List horizontal pod autoscalers | `oc get hpa` |
+| `oc get replicasets` | List replica sets | `oc get replicasets` |
+| `oc get rs` | Short form for replica sets | `oc get rs` |
+| `oc new-app` | Create new application | `oc new-app nginx:latest` |
+| `oc new-app --name=myapp` | Create app with specific name | `oc new-app --name=myapp https://github.com/user/repo.git` |
+| **ConfigMaps and Secrets** |
+| `oc get configmaps` | List config maps | `oc get configmaps` |
+| `oc get cm` | Short form for config maps | `oc get cm` |
+| `oc describe configmap` | Describe config map | `oc describe configmap app-config` |
+| `oc create configmap --from-file` | Create config map from file | `oc create configmap app-config --from-file=config.properties` |
+| `oc create configmap --from-literal` | Create config map from literal | `oc create configmap app-config --from-literal=key1=value1` |
+| `oc get secrets` | List secrets | `oc get secrets` |
+| `oc describe secret` | Describe secret | `oc describe secret mysecret` |
+| `oc create secret generic` | Create generic secret | `oc create secret generic mysecret --from-literal=username=admin` |
+| `oc create secret docker-registry` | Create docker registry secret | `oc create secret docker-registry regcred --docker-server=registry.com --docker-username=user` |
+| `oc extract secret/name --to=.` | Extract secret to files | `oc extract secret/mysecret --to=.` |
+| **Storage and Persistent Volumes** |
+| `oc get pv` | List persistent volumes | `oc get pv` |
+| `oc get pvc` | List persistent volume claims | `oc get pvc` |
+| `oc describe pv` | Describe persistent volume | `oc describe pv pv-001` |
+| `oc describe pvc` | Describe persistent volume claim | `oc describe pvc data-claim` |
+| `oc get storageclass` | List storage classes | `oc get storageclass` |
+| `oc get sc` | Short form for storage classes | `oc get sc` |
+| **Security and RBAC** |
+| `oc get sa` | List service accounts | `oc get sa` |
+| `oc get serviceaccounts` | List service accounts (full) | `oc get serviceaccounts` |
+| `oc describe sa` | Describe service account | `oc describe sa default` |
+| `oc get rolebindings` | List role bindings | `oc get rolebindings` |
+| `oc get clusterrolebindings` | List cluster role bindings | `oc get clusterrolebindings` |
+| `oc get roles` | List roles | `oc get roles` |
+| `oc get clusterroles` | List cluster roles | `oc get clusterroles` |
+| `oc describe rolebinding` | Describe role binding | `oc describe rolebinding admin` |
+| `oc policy add-role-to-user` | Add role to user | `oc policy add-role-to-user edit developer` |
+| `oc policy remove-role-from-user` | Remove role from user | `oc policy remove-role-from-user edit developer` |
+| `oc auth can-i` | Check permissions | `oc auth can-i create pods` |
+| `oc auth can-i --list` | List allowed actions | `oc auth can-i --list` |
+| `oc get scc` | List security context constraints | `oc get scc` |
+| `oc describe scc` | Describe security context constraint | `oc describe scc restricted` |
+| **Image Management** |
+| `oc get images` | List images | `oc get images` |
+| `oc get imagestreams` | List image streams | `oc get imagestreams` |
+| `oc get is` | Short form for image streams | `oc get is` |
+| `oc describe imagestream` | Describe image stream | `oc describe imagestream myapp` |
+| `oc tag` | Tag image | `oc tag myapp:latest myapp:stable` |
+| `oc import-image` | Import image | `oc import-image myapp --from=registry.com/myapp:latest` |
+| `oc get imagestreamtags` | List image stream tags | `oc get imagestreamtags` |
+| **Build Management** |
+| `oc get builds` | List builds | `oc get builds` |
+| `oc get buildconfigs` | List build configs | `oc get buildconfigs` |
+| `oc get bc` | Short form for build configs | `oc get bc` |
+| `oc describe build` | Describe build | `oc describe build myapp-1` |
+| `oc describe buildconfig` | Describe build config | `oc describe buildconfig myapp` |
+| `oc start-build` | Start new build | `oc start-build myapp` |
+| `oc start-build --from-dir=.` | Build from local directory | `oc start-build myapp --from-dir=.` |
+| `oc logs build/name` | Show build logs | `oc logs build/myapp-1` |
+| `oc logs -f bc/name` | Follow build config logs | `oc logs -f bc/myapp` |
+| `oc cancel-build` | Cancel build | `oc cancel-build myapp-1` |
+| **Monitoring and Metrics** |
+| `oc adm top nodes` | Show node resource usage | `oc adm top nodes` |
+| `oc adm top pods` | Show pod resource usage | `oc adm top pods` |
+| `oc adm top pods --containers` | Show container resource usage | `oc adm top pods --containers` |
+| `oc get --raw /metrics` | Get cluster metrics | `oc get --raw /metrics` |
+| `oc get --raw /api/v1/nodes/node-name/proxy/metrics` | Get node metrics | `oc get --raw /api/v1/nodes/worker-1/proxy/metrics` |
+| **Troubleshooting Commands** |
+| `oc debug node/name` | Debug node | `oc debug node/worker-1` |
+| `oc debug pod/name` | Debug pod | `oc debug pod/myapp-1-abc123` |
+| `oc debug deployment/name` | Debug deployment | `oc debug deployment/myapp` |
+| `oc rsh pod-name` | Remote shell to pod | `oc rsh myapp-1-abc123` |
+| `oc rsync pod-name:remote local` | Sync files from pod | `oc rsync myapp-1-abc123:/app/logs ./logs` |
+| `oc rsync local pod-name:remote` | Sync files to pod | `oc rsync ./config myapp-1-abc123:/app/config` |
+| `oc get events --sort-by='.lastTimestamp'` | Show recent events | `oc get events --sort-by='.lastTimestamp'` |
+| `oc get pods --field-selector status.phase=Pending` | Find pending pods | `oc get pods --field-selector status.phase=Pending` |
+| `oc get pods --field-selector status.phase=Failed` | Find failed pods | `oc get pods --field-selector status.phase=Failed` |
+| `oc describe pod pod-name | grep -A 10 Events` | Show pod events | `oc describe pod myapp-1-abc123 | grep -A 10 Events` |
+| **Administrative Commands** |
+| `oc adm must-gather` | Collect cluster data for support | `oc adm must-gather` |
+| `oc adm inspect` | Inspect cluster resources | `oc adm inspect ns/myproject` |
+| `oc adm policy` | Manage authorization policies | `oc adm policy add-cluster-role-to-user cluster-admin user` |
+| `oc adm groups` | Manage user groups | `oc adm groups new developers` |
+| `oc adm prune` | Clean up resources | `oc adm prune images --keep-tag-revisions=3` |
+| `oc adm cordon node` | Mark node as unschedulable | `oc adm cordon worker-1` |
+| `oc adm uncordon node` | Mark node as schedulable | `oc adm uncordon worker-1` |
+| `oc adm drain node` | Drain node for maintenance | `oc adm drain worker-1 --ignore-daemonsets` |
+| **Certificate Management** |
+| `oc get csr` | List certificate signing requests | `oc get csr` |
+| `oc describe csr` | Describe certificate signing request | `oc describe csr csr-abc123` |
+| `oc adm certificate approve` | Approve certificate signing request | `oc adm certificate approve csr-abc123` |
+| `oc adm certificate deny` | Deny certificate signing request | `oc adm certificate deny csr-abc123` |
+| `oc delete csr` | Delete certificate signing request | `oc delete csr csr-abc123` |
+| `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving` | Filter CSRs by signer | `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving` |
+| `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` | List pending CSRs | `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` |
+| `oc patch` | Update resource using patch | `oc patch deployment myapp -p '{"spec":{"replicas":3}}'` |
+| `oc label` | Add/update labels | `oc label pod myapp-1-abc123 env=production` |
+| `oc annotate` | Add/update annotations | `oc annotate pod myapp-1-abc123 description="Main application pod"` |
+| **Output Formatting** |
+| `oc get pods -o wide` | Wide output format | `oc get pods -o wide` |
+| `oc get pods -o yaml` | YAML output format | `oc get pods -o yaml` |
+| `oc get pods -o json` | JSON output format | `oc get pods -o json` |
+| `oc get pods -o jsonpath='{.items[*].metadata.name}'` | JSONPath output | `oc get pods -o jsonpath='{.items[*].metadata.name}'` |
+| `oc get pods -o custom-columns=NAME:.metadata.name,STATUS:.status.phase` | Custom columns | `oc get pods -o custom-columns=NAME:.metadata.name,STATUS:.status.phase` |
+| `oc get pods --show-labels` | Show labels | `oc get pods --show-labels` |
+| `oc get pods --no-headers` | Suppress headers | `oc get pods --no-headers` |
+| **Resource Management** |
+| `oc apply -f file.yaml` | Apply configuration from file | `oc apply -f deployment.yaml` |
+| `oc create -f file.yaml` | Create resource from file | `oc create -f service.yaml` |
+| `oc replace -f file.yaml` | Replace resource from file | `oc replace -f configmap.yaml` |
+| `oc delete -f file.yaml` | Delete resource from file | `oc delete -f deployment.yaml` |
+| `oc edit` | Edit resource | `oc edit deployment myapp` |
+| `oc explain` | Show resource documentation | `oc explain pod.spec.containers` |
+| `oc wait` | Wait for condition | `oc wait --for=condition=available deployment/myapp` |
+| `oc wait --for=delete` | Wait for resource deletion | `oc wait --for=delete pod/myapp-1-abc123` |
