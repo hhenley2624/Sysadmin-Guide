@@ -1040,7 +1040,7 @@
 | `man -k keyword`      | Search manpages for keyword         | `man -k partition`      |
 | `man -f command`      | Same as whatis                      | `man -f ls`             |
 | `man -K keyword`      | Search all manpages for keyword     | `man -K resize`         |
-| `man -t command       | ps2pdf - > command.pdf`             | Convert man page to PDF | `man -t ls | ps2pdf - > ls.pdf` |
+| `man -t command \| ps2pdf - > command.pdf` | Convert man page to PDF | `man -t ls \| ps2pdf - > ls.pdf` |
 | `man section command` | View specific manual section        | `man 5 passwd`          |
 | `man -w command`      | Show manual file location           | `man -w ls`             |
 | `info command`        | Display info documentation          | `info ls`               |
