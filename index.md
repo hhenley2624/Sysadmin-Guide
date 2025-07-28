@@ -1242,7 +1242,7 @@
 | `oc get events --sort-by='.lastTimestamp'` | Show recent events | `oc get events --sort-by='.lastTimestamp'` |
 | `oc get pods --field-selector status.phase=Pending` | Find pending pods | `oc get pods --field-selector status.phase=Pending` |
 | `oc get pods --field-selector status.phase=Failed` | Find failed pods | `oc get pods --field-selector status.phase=Failed` |
-| `oc describe pod pod-name | grep -A 10 Events` | Show pod events | `oc describe pod myapp-1-abc123 | grep -A 10 Events` |
+| `oc describe pod pod-name \| grep -A 10 Events` | Show pod events | `oc describe pod myapp-1-abc123 \| grep -A 10 Events` |
 | **Administrative Commands** |
 | `oc adm must-gather` | Collect cluster data for support | `oc adm must-gather` |
 | `oc adm inspect` | Inspect cluster resources | `oc adm inspect ns/myproject` |
@@ -1260,6 +1260,7 @@
 | `oc delete csr` | Delete certificate signing request | `oc delete csr csr-abc123` |
 | `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving` | Filter CSRs by signer | `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving` |
 | `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` | List pending CSRs | `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` |
+| **Miscellaneous Commands** |
 | `oc patch` | Update resource using patch | `oc patch deployment myapp -p '{"spec":{"replicas":3}}'` |
 | `oc label` | Add/update labels | `oc label pod myapp-1-abc123 env=production` |
 | `oc annotate` | Add/update annotations | `oc annotate pod myapp-1-abc123 description="Main application pod"` |
