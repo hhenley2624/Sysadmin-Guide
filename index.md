@@ -1087,24 +1087,24 @@
 
 ### Basic OpenShift Commands
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
-| `oc login` | Log in to OpenShift cluster | `oc login https://api.cluster.com:6443` |
-| `oc login --token=TOKEN` | Log in using token | `oc login --token=sha256~abc123 --server=https://api.cluster.com:6443` |
-| `oc whoami` | Show current user | `oc whoami` |
-| `oc whoami -t` | Show current user's token | `oc whoami -t` |
-| `oc config current-context` | Show current context | `oc config current-context` |
-| `oc config get-contexts` | List all contexts | `oc config get-contexts` |
-| `oc config use-context` | Switch context | `oc config use-context dev-cluster` |
-| `oc logout` | Log out from OpenShift | `oc logout` |
-| `oc version` | Show OpenShift and client version | `oc version` |
-| `oc api-resources` | List all API resources | `oc api-resources` |
-| `oc api-versions` | List all API versions | `oc api-versions` |
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
+| `oc login`                       | Log in to OpenShift cluster   | `oc login https://api.cluster.com:6443` |
+| `oc login --token=TOKEN`         | Log in using token            | `oc login --token=sha256~abc123 --server=https://api.cluster.com:6443` |
+| `oc whoami`                      | Show current user             | `oc whoami` |
+| `oc whoami -t`                   | Show current user's token     | `oc whoami -t` |
+| `oc config current-context`      | Show current context          | `oc config current-context` |
+| `oc config get-contexts`         | List all contexts             | `oc config get-contexts` |
+| `oc config use-context`          | Switch context                | `oc config use-context dev-cluster` |
+| `oc logout`                      | Log out from OpenShift        | `oc logout` |
+| `oc version`                     | Show OpenShift and client version | `oc version` |
+| `oc api-resources`               | List all API resources        | `oc api-resources` |
+| `oc api-versions`                | List all API versions         | `oc api-versions` |
 
 ### Cluster Health and Status
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc status` | Show overview of current project | `oc status` |
 | `oc get nodes` | List all nodes | `oc get nodes` |
 | `oc get nodes -o wide` | List nodes with additional info | `oc get nodes -o wide` |
@@ -1120,8 +1120,8 @@
 
 ### Project/Namespace Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc projects` | List all accessible projects | `oc projects` |
 | `oc project` | Show current project | `oc project` |
 | `oc project project-name` | Switch to project | `oc project myapp-dev` |
@@ -1135,8 +1135,8 @@
 
 ### Pod Management and Troubleshooting
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get pods` | List pods in current project | `oc get pods` |
 | `oc get pods -o wide` | List pods with node info | `oc get pods -o wide` |
 | `oc get pods --all-namespaces` | List pods across all namespaces | `oc get pods --all-namespaces` |
@@ -1161,8 +1161,8 @@
 
 ### Service and Route Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get services` | List services | `oc get services` |
 | `oc get svc` | Short form for services | `oc get svc` |
 | `oc describe service` | Describe service | `oc describe service myapp-service` |
@@ -1176,8 +1176,8 @@
 
 ### Deployment and Application Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get deployments` | List deployments | `oc get deployments` |
 | `oc get deploy` | Short form for deployments | `oc get deploy` |
 | `oc get dc` | List deployment configs | `oc get dc` |
@@ -1198,8 +1198,8 @@
 
 ### ConfigMaps and Secrets
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get configmaps` | List config maps | `oc get configmaps` |
 | `oc get cm` | Short form for config maps | `oc get cm` |
 | `oc describe configmap` | Describe config map | `oc describe configmap app-config` |
@@ -1213,8 +1213,8 @@
 
 ### Storage and Persistent Volumes
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get pv` | List persistent volumes | `oc get pv` |
 | `oc get pvc` | List persistent volume claims | `oc get pvc` |
 | `oc describe pv` | Describe persistent volume | `oc describe pv pv-001` |
@@ -1224,8 +1224,8 @@
 
 ### Security and RBAC
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get sa` | List service accounts | `oc get sa` |
 | `oc get serviceaccounts` | List service accounts (full) | `oc get serviceaccounts` |
 | `oc describe sa` | Describe service account | `oc describe sa default` |
@@ -1243,8 +1243,8 @@
 
 ### Image Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get images` | List images | `oc get images` |
 | `oc get imagestreams` | List image streams | `oc get imagestreams` |
 | `oc get is` | Short form for image streams | `oc get is` |
@@ -1255,8 +1255,8 @@
 
 ### Build Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get builds` | List builds | `oc get builds` |
 | `oc get buildconfigs` | List build configs | `oc get buildconfigs` |
 | `oc get bc` | Short form for build configs | `oc get bc` |
@@ -1270,8 +1270,8 @@
 
 ### Monitoring and Metrics
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc adm top nodes` | Show node resource usage | `oc adm top nodes` |
 | `oc adm top pods` | Show pod resource usage | `oc adm top pods` |
 | `oc adm top pods --containers` | Show container resource usage | `oc adm top pods --containers` |
@@ -1280,8 +1280,8 @@
 
 ### Troubleshooting Commands
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc debug node/name` | Debug node | `oc debug node/worker-1` |
 | `oc debug pod/name` | Debug pod | `oc debug pod/myapp-1-abc123` |
 | `oc debug deployment/name` | Debug deployment | `oc debug deployment/myapp` |
@@ -1295,8 +1295,8 @@
 
 ### Administrative Commands
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc adm must-gather` | Collect cluster data for support | `oc adm must-gather` |
 | `oc adm inspect` | Inspect cluster resources | `oc adm inspect ns/myproject` |
 | `oc adm policy` | Manage authorization policies | `oc adm policy add-cluster-role-to-user cluster-admin user` |
@@ -1308,8 +1308,8 @@
 
 ### Certificate Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get csr` | List certificate signing requests | `oc get csr` |
 | `oc describe csr` | Describe certificate signing request | `oc describe csr csr-abc123` |
 | `oc adm certificate approve` | Approve certificate signing request | `oc adm certificate approve csr-abc123` |
@@ -1320,8 +1320,8 @@
 
 ### Output Formatting
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc get pods -o wide` | Wide output format | `oc get pods -o wide` |
 | `oc get pods -o yaml` | YAML output format | `oc get pods -o yaml` |
 | `oc get pods -o json` | JSON output format | `oc get pods -o json` |
@@ -1332,8 +1332,8 @@
 
 ### Resource Management
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc apply -f file.yaml` | Apply configuration from file | `oc apply -f deployment.yaml` |
 | `oc create -f file.yaml` | Create resource from file | `oc create -f service.yaml` |
 | `oc replace -f file.yaml` | Replace resource from file | `oc replace -f configmap.yaml` |
@@ -1345,8 +1345,8 @@
 
 ### Miscellaneous Commands
 
-| Command | Description | Example Usage |
-|---------|-------------|---------------|
+| Command                          | Description                   | Example Usage                                |
+| -------------------------------- | ----------------------------- | -------------------------------------------- |
 | `oc patch` | Update resource using patch | `oc patch deployment myapp -p '{"spec":{"replicas":3}}'` |
 | `oc label` | Add/update labels | `oc label pod myapp-1-abc123 env=production` |
 | `oc annotate` | Add/update annotations | `oc annotate pod myapp-1-abc123 description="Main application pod"` |
