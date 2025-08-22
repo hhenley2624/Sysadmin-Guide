@@ -1308,15 +1308,14 @@
 
 ### Certificate Management
 
-| Command                          | Description                   | Example Usage                                |
-| -------------------------------- | ----------------------------- | -------------------------------------------- |
-| `oc get csr` | List certificate signing requests | `oc get csr` |
-| `oc describe csr` | Describe certificate signing request | `oc describe csr csr-abc123` |
-| `oc adm certificate approve` | Approve certificate signing request | `oc adm certificate approve csr-abc123` |
-| `oc adm certificate deny` | Deny certificate signing request | `oc adm certificate deny csr-abc123` |
-| `oc delete csr` | Delete certificate signing request | `oc delete csr csr-abc123` |
-| `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving` | Filter CSRs by signer | `oc get csr --field-selector spec.signerName=kubernetes.io/kubelet-serving` |
-| `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` | List pending CSRs | `oc get csr -o jsonpath='{.items[?(@.status.conditions[0].type=="Pending")].metadata.name}'` |
+| Command                          | Description                          | Example Usage                                |
+| -------------------------------- | ------------------------------------ | -------------------------------------------- |
+| `oc get csr`                     | List certificate signing requests    | `oc get csr` |
+| `oc describe csr`                | Describe certificate signing request | `oc describe csr csr-abc123` |
+| `oc adm certificate approve`     | Approve certificate signing request  | `oc adm certificate approve csr-abc123` |
+| `oc adm certificate deny`        | Deny certificate signing request     | `oc adm certificate deny csr-abc123` |
+| `oc delete csr`                  | Delete certificate signing request   | `oc delete csr csr-abc123` |
+
 
 ### Output Formatting
 
