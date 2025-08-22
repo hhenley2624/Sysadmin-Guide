@@ -901,17 +901,17 @@
 
 ## PKI (Public Key Infrastructure) Commands
 
-| Command            | Description                          | Example Usage                                  |
-| ------------------ | ------------------------------------ | ---------------------------------------------- |
-| `openssl req`      | Create certificate signing requests  | `openssl req -new -key key.pem -out csr.pem`   |
-| `openssl genrsa`   | Generate RSA private key             | `openssl genrsa -out key.pem 2048`             |
-| `openssl x509`     | Certificate display and signing tool | `openssl x509 -in cert.pem -text`              |
-| `openssl ca`       | Sign certificate requests with CA    | `openssl ca -in csr.pem -out cert.pem`         |
-| `openssl verify`   | Verify certificate validity          | `openssl verify -CAfile ca.pem cert.pem`       |
-| `openssl s_client` | SSL/TLS client                       | `openssl s_client -connect host:port`          |
-| `openssl s_server` | SSL/TLS server                       | `openssl s_server -key key.pem -cert cert.pem` |
-| `keytool`          | Java certificate management          | `keytool -list -keystore keystore.jks`         |
-| `certutil`         | NSS certificate management           | `certutil -d /path/to/db -L`                   |
+| Command              | Description                              | Example Usage                                  |
+| -------------------- | ---------------------------------------- | ---------------------------------------------- |
+| `openssl req`        | Create certificate signing requests      | `openssl req -new -key key.pem -out csr.pem`   |
+| `openssl genrsa`     | Generate RSA private key                 | `openssl genrsa -out key.pem 2048`             |
+| `openssl x509`       | Certificate display and signing tool     | `openssl x509 -in cert.pem -text`              |
+| `openssl ca`         | Sign certificate requests with CA        | `openssl ca -in csr.pem -out cert.pem`         |
+| `openssl verify`     | Verify certificate validity              | `openssl verify -CAfile ca.pem cert.pem`       |
+| `openssl s_client`   | SSL/TLS client                           | `openssl s_client -connect host:port`          |
+| `openssl s_server`   | SSL/TLS server                           | `openssl s_server -key key.pem -cert cert.pem` |
+| `keytool`            | Java certificate management              | `keytool -list -keystore keystore.jks`         |
+| `certutil`           | NSS certificate management               | `certutil -d /path/to/db -L`                   |
 
 ## Other Useful Commands
 
